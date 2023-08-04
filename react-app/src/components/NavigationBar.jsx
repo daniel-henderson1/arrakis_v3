@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
+import { Theme, createTheme } from '@mui/material';
+import { ThemeProvider } from '@emotion/react';
 
 const pages = ['Home', 'Books', 'Upcoming'];
 
@@ -20,16 +22,24 @@ const NavigationBar = (props) => {
     const TabPanel = ({value, index}) => {
         console.log();
     }
+    const theme = createTheme({
+        palette: {
+          secondary: {
+            main: '#8FBCCC'
+          }
+        }
+      });
 
   return (
     <>
+    <ThemeProvider theme={theme}>
     <AppBar position="static"  sx={{ 'background-color': '#e8f6ff'}}>
         <Container maxWidth="xl">
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', 'justify-content': 'space-around' } }}>
-                <Tabs value={selectedTab} onChange={handleTabChange} sx={{color: 'white'}}>
+                <Tabs value={selectedTab} onChange={handleTabChange} textColor='secondary' sx={{color: 'white'}} TabIndicatorProps={{ style: {background: '#8fbccc'} }}>
                     <Tab label={pages[0]} />
-                    <Tab label={pages[1]}  />
-                    <Tab label={pages[2]}  />
+                    <Tab label={pages[1]} />
+                    <Tab label={pages[2]} />
                 </Tabs>
             </Box>
         </Container>
@@ -37,6 +47,7 @@ const NavigationBar = (props) => {
     <TabPanel value={selectedTab} index={0}/>
     <TabPanel value={selectedTab} index={1}/>
     <TabPanel value={selectedTab} index={2}/>
+    </ThemeProvider>
      </>
    );
 }
