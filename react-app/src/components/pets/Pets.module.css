@@ -25,3 +25,7 @@
     width: 75%;
     height: 50%;
 }
+
+.table-header {
+    background-color: rgb(238, 131, 0);
+}

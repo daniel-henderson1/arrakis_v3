@@ -28,7 +28,7 @@ export const HomePage = () => {
             });
     }, []);
     const columnDef = [
-      {field: 'cusip', headerName: 'CUSIP', flex: 1},
+      {field: 'cusip', headerName: 'CUSIP', flex: 1, className: 'styles.table-header'},
       {field: 'bondCurrency', headerName: 'Currency', flex: 1},
       {field: 'faceValue', headerName: 'Face Value', flex: 1},
       {field: 'bondMaturityDate', headerName: 'Maturity Date', flex: 1},
@@ -77,7 +77,7 @@ export const HomePage = () => {
             <DataGrid
               rows={rowDef}
               columns={columnDef}
-              sx={{ maxWidth: '75%' }}
+              sx={{ maxWidth: '75%'}}
               onRowClick={handleRowClick}
               maxColumns={6}
               />
