@@ -110,7 +110,9 @@ export const UpcomingPage = () => {
                 <DataGrid
                     rows={rowDef}
                     columns={columnDef}
-                    sx={{ maxWidth: '75%' }}
+                    sx={{ maxWidth: '75%', '.MuiDataGrid-columnHeader': {
+                        'background-color': '#8fbccc'
+                      } }}
                     onRowClick={handleRowClick}
                     maxColumns={6}
                     />

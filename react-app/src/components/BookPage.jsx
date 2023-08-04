@@ -116,14 +116,18 @@ export const BookPage = () => {
                     <DataGrid
                         rows={rowDef1}
                         columns={columnDef1}
-                        sx={{ height: '50%'}}
+                        sx={{ height: '50%', '.MuiDataGrid-columnHeader': {
+                            'background-color': '#8fbccc'
+                          }}}
                         onRowClick={handleRowClickBook}
                         maxColumns={6}
                         />
                     <DataGrid
                         rows={rowDef2}
                         columns={columnDef2}
-                        sx={{ height: '50%' }}
+                        sx={{ height: '50%', '.MuiDataGrid-columnHeader': {
+                            'background-color': '#8fbccc'
+                          } }}
                         onRowClick={handleRowClickTrade}
                         maxColumns={6}
                         />
