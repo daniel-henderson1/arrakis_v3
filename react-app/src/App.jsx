@@ -37,14 +37,14 @@ export default App;
 
 
 // import React from 'react';
-// import LoginPage from "./components/LoginPage.jsx"
+// import Register from "./components/Register.jsx"
 
 // function App() {
 //   return (
 //     <div className="App">
-//       <LoginPage />
+//       <Register />
 //     </div>
 //   );
 // }
 
-// export default App;
+//export default App;
