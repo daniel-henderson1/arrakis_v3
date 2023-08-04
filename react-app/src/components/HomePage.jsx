@@ -79,7 +79,9 @@ export const HomePage = () => {
               columns={columnDef}
               sx={{ maxWidth: '75%', '.MuiDataGrid-columnHeader': {
                 'background-color': '#8fbccc'
-              }}}
+              }, '.MuiDataGrid-row:nth-child(odd)': {
+                'background-color': '#d5d9db'
+              } }}
               onRowClick={handleRowClick}
               maxColumns={6}
               />

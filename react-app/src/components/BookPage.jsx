@@ -118,7 +118,9 @@ export const BookPage = () => {
                         columns={columnDef1}
                         sx={{ height: '50%', '.MuiDataGrid-columnHeader': {
                             'background-color': '#8fbccc'
-                          }}}
+                          }, '.MuiDataGrid-row:nth-child(odd)': {
+                            'background-color': '#d5d9db'
+                          } }}
                         onRowClick={handleRowClickBook}
                         maxColumns={6}
                         />
@@ -127,6 +129,8 @@ export const BookPage = () => {
                         columns={columnDef2}
                         sx={{ height: '50%', '.MuiDataGrid-columnHeader': {
                             'background-color': '#8fbccc'
+                          }, '.MuiDataGrid-row:nth-child(odd)': {
+                            'background-color': '#d5d9db'
                           } }}
                         onRowClick={handleRowClickTrade}
                         maxColumns={6}
