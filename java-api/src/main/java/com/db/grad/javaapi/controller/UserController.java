@@ -34,7 +34,7 @@ public class UserController {
                         @PathVariable(value = "password") String password){
         return userHandler.auth(username,password);
     }
-    @GetMapping("/users/register/{username}/{password}/{firstname}/{lastname}")
+    @PostMapping("/users/register/{username}/{password}/{firstname}/{lastname}")
     public boolean register(@PathVariable(value = "username") String username,
                             @PathVariable(value = "password") String password,
                             @PathVariable(value = "firstname") String firstname,
