@@ -78,7 +78,7 @@ const Register = (props) => {
           />
         </div>
         <div style = {{marginBottom:'2%'}}>
-          <label>First Name: </label>
+          <label>First Name:&thinsp;</label>
           <input
             type="text"
             value={firstName}
