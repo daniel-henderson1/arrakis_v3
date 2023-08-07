@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
+import { Theme, createTheme } from '@mui/material';
+import { ThemeProvider } from '@emotion/react';
 import companyLogo from '../assets/logo.png';
 
 const pages = ['Home', 'Books', 'Upcoming'];
@@ -21,19 +23,27 @@ const NavigationBar = (props) => {
     const TabPanel = ({value, index}) => {
         console.log();
     }
+    const theme = createTheme({
+        palette: {
+          secondary: {
+            main: '#000000'
+          }
+        }
+      });
 
   return (
     <>
-    <AppBar position="static"  sx={{ 'background-color': '#ffe6b3'}}>
+    <ThemeProvider theme={theme}>
+    <AppBar position="static"  sx={{ 'background-color': '#f5dba4'}}>
         <Container maxWidth="xl">
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex'} }}>
-            <div style={{fontSize: '30px',color:'#B97A57',fontFamily:'papyrus'}}>Arrakis</div>
-            <img width='100px' height = 'auto' src = {companyLogo}/>
-            <div style={{marginLeft:'15%'}}>
-                <Tabs value={selectedTab} onChange={handleTabChange} sx={{color: 'white'}}>
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', 'justify-content': 'space-around' } }}>
+              <div style={{fontSize: '30px',color:'#B97A57',fontFamily:'papyrus'}}>Arrakis</div>
+              <img width='100px' height = 'auto' src = {companyLogo}/>
+              <div style={{marginLeft:'15%'}}>
+                <Tabs value={selectedTab} onChange={handleTabChange} textColor='secondary' sx={{color: 'white'}} TabIndicatorProps={{ style: {background: '#dbb669'} }}
                     <Tab label={pages[0]} />
-                    <Tab label={pages[1]}  />
-                    <Tab label={pages[2]}  />
+                    <Tab label={pages[1]} />
+                    <Tab label={pages[2]} />
                 </Tabs>
             </div>
             </Box>
@@ -42,6 +52,7 @@ const NavigationBar = (props) => {
     <TabPanel value={selectedTab} index={0}/>
     <TabPanel value={selectedTab} index={1}/>
     <TabPanel value={selectedTab} index={2}/>
+    </ThemeProvider>
      </>
    );
 }
