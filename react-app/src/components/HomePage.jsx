@@ -118,7 +118,7 @@ export const HomePage = () => {
                       ISIN: {isin}
                 </CardContent>
                 <Button variant="contained" color='grey' onClick={handleSubmit}>
-                    Submit
+                    Redeem
                 </Button>
             </Card>
             }

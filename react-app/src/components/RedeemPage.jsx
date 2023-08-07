@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { findSecurities } from "../services/SecurityServices";
+import { findRedeemed, findSecurities } from "../services/SecurityServices";
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from "@mui/material";
 import { Card } from "@mui/material";
@@ -22,7 +22,7 @@ export const RedeemPage = () => {
     const [type, setType] = useState("");
 
     useEffect(() => {
-      findSecurities()
+      findRedeemed()
             .then(({data}) => {
             setSecurities(data);
             });
