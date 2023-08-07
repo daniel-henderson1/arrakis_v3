@@ -119,4 +119,12 @@ public class SecurityHandler implements ISecurityService
         }
         return list;
     }
+    public List<Security> getByRedeemed(){
+        return itsSecuritiesRepo.findByRedeemed(1);
+    }
+    public Security redeem(long id ){
+        Security securityToUpdate = itsSecuritiesRepo.findById(id);
+        securityToUpdate.setRedeemed(1);
+        return itsSecuritiesRepo.save( securityToUpdate );
+    }
 }
