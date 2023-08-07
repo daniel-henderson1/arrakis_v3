@@ -5,15 +5,24 @@ import { useState } from "react";
 import { UpcomingPage } from "./components/UpcomingPage";
 import { BookPage } from "./components/BookPage";
 import LoginPage from "./components/LoginPage"
+import Register from "./components/Register"
 import { RedeemPage } from "./components/RedeemPage";
+
 
 const App = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [register, setRegister] = useState(false);
   if (!loggedIn) {
-    return (
-      <LoginPage setLog={setLoggedIn} />
-    )
+    if(!register){
+      return (
+        <LoginPage setReg={setRegister} setLog={setLoggedIn} />
+      )
+    } else {
+      return(
+        <Register setReg={setRegister}/>
+      )
+    }
   } else {
     if (selectedTab === 0) {
       return (
