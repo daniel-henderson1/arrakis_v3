@@ -8,7 +8,10 @@ import { Card } from "@mui/material";
 import { Button } from "@mui/material";
 import { CardContent } from "@mui/material";
 import styles from "./pets/Pets.module.css";
+import { hostNameUrl } from "../config/api";
+import axios from "axios";
 import App from "../App";
+import { findUpcoming } from "../services/UpcomingServices";
 
 
 export const HomePage = () => {
@@ -26,21 +29,22 @@ export const HomePage = () => {
     const [type, setType] = useState("");
 
     const MyComponent = () => {
-      const handleButtonClick = () => {
-        if (securities.bondMaturityDate < Date.now) {
+      useEffect(() => {
+        if (findUpcoming) {
           toast.warning('Alert: You have bonds overdue for action.', {
             position: toast.POSITION.TOP_RIGHT,
             autoClose: false,
-          });
+        });
         }
-      };
+        },[]);
+
     return (
       <div>
-        <button onClick={handleButtonClick}>Show Toast</button>
+        <h1>stuffs</h1>
         <ToastContainer />
       </div>
     );
-  }
+  };
 
 
     useEffect(() => {
