@@ -33,22 +33,22 @@ export const BookPage = () => {
     }
 
     const handleRowClickTrade = (params) => {
-        setID(params.row.id);
-        setCouponPercent(params.row.couponPercent);
-        setBondCurrency(params.row.bondCurrency);
-        setCusip(params.row.cusip);
-        setFaceValue(params.row.faceValue);
-        setIsin(params.row.isin);
-        setIssuerName(params.row.issuerName);
-        setBondMaturityDate(params.row.bondMaturityDate);
-        setStatus(params.row.status);
-        setType(params.row.type);
-        if (params.row.id !== id) {
-            setCardMessage(true);
-        } else {
-            setCardMessage(!cardMessage);
-        }
-        console.log('Clicked trade ID: ' + params.row.id);
+        // setID(params.row.id);
+        // setCouponPercent(params.row.couponPercent);
+        // setBondCurrency(params.row.bondCurrency);
+        // setCusip(params.row.cusip);
+        // setFaceValue(params.row.faceValue);
+        // setIsin(params.row.isin);
+        // setIssuerName(params.row.issuerName);
+        // setBondMaturityDate(params.row.bondMaturityDate);
+        // setStatus(params.row.status);
+        // setType(params.row.type);
+        // if (params.row.id !== id) {
+        //     setCardMessage(true);
+        // } else {
+        //     setCardMessage(!cardMessage);
+        // }
+        // console.log('Clicked trade ID: ' + params.row.id);
     }
 
     useEffect(() => {
