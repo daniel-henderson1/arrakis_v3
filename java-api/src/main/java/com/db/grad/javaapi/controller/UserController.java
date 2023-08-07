@@ -16,16 +16,29 @@ public class UserController {
     public UserController(UserHandler uT){
         userHandler = uT;
     }
-    @GetMapping("/users/{id}")
+    @GetMapping("/users/id/{id}")
     public User getTradeById(@PathVariable(value = "id") long id){
         return userHandler.getUserByID(id);
     }
-    @GetMapping("/users/{username}")
-    public User getTradeBySecurityID(@PathVariable(value = "id") String username){
-        return UserHandler.getUserByUsername(username);
+    @GetMapping("/users/username/{username}")
+    public User getTradeBySecurityID(@PathVariable(value = "username") String username){
+        return userHandler.getUserByUsername(username);
     }
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userHandler.getAllUsers();
+    }
+
+    @GetMapping("/users/auth/{username}/{password}")
+    public boolean auth(@PathVariable(value = "username") String username,
+                        @PathVariable(value = "password") String password){
+        return userHandler.auth(username,password);
+    }
+    @PostMapping("/users/register/{username}/{password}/{firstname}/{lastname}")
+    public boolean register(@PathVariable(value = "username") String username,
+                            @PathVariable(value = "password") String password,
+                            @PathVariable(value = "firstname") String firstname,
+                            @PathVariable(value = "lastname") String lastname) {
+        return userHandler.register(username, password, firstname, lastname);
     }
 }
