@@ -7,7 +7,6 @@ import { Button } from "@mui/material";
 import { CardContent } from "@mui/material";
 import styles from "./pets/Pets.module.css";
 import { findUpcoming } from "../services/UpcomingServices";
-import { Button } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -38,7 +37,6 @@ export const HomePage = () => {
 
       return (
         <div>
-          <h1>stuffs</h1>
           <ToastContainer />
         </div>
       );

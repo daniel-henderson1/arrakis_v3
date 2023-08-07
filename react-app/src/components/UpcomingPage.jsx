@@ -64,13 +64,12 @@ export const UpcomingPage = () => {
 
     const columnDef = [
       {field: 'id', headerName: 'ID', flex: 1},
-      {field: 'couponPercent', headerName: 'Coupon %'},
-      {field: 'bondCurrency', headerName: 'Currency'},
+      {field: 'couponPercent', headerName: 'Coupon %', flex: 1},
       {field: 'cusip', headerName: 'CUSIP', flex: 1},
       {field: 'bondCurrency', headerName: 'Currency', flex: 1},
       {field: 'faceValue', headerName: 'Face Value', flex: 1},
-      {field: 'isin', headerName: 'ISIN'},
-      {field: 'issuerName', headerName: 'Issuer'},
+      {field: 'isin', headerName: 'ISIN', flex: 1},
+      {field: 'issuerName', headerName: 'Issuer', flex: 1},
       {field: 'bondMaturityDate', headerName: 'Maturity Date', flex: 1},
       {field: 'status', headerName: 'Status', flex: 1},
       {field: 'type', headerName: 'Type', flex: 1}
@@ -94,7 +93,7 @@ export const UpcomingPage = () => {
 
     const notify = () => toast("Redeemed!")
     const handleSubmit2 = () => {
-      console.log(id);
+      console.log(rowDef[0].bondMaturityDate);
       notify();
       postRedeem(id);
   }
@@ -103,7 +102,7 @@ export const UpcomingPage = () => {
     <>
         <div className={styles.fields}>
         <TextField
-         sx = {{ 'display': 'flex', 'flex-direction': 'row', 'justify-content': 'space-around', 'content-align': 'center'}}
+         sx = {{ 'display': 'flex', 'flex-direction': 'row', 'justify-content': 'space-around', 'content-align': 'center' }}
          id="standard-basic" 
          variant="standard" 
          type="search"
