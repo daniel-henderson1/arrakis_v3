@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button } from "@mui/material";
 
 const Register = (props) => {
   const [username, setUsername] = useState('');
@@ -57,47 +58,51 @@ const Register = (props) => {
     props.setReg(false)
   };
   return (
-    <div>
+    <div style = {{marginLeft:'10%'}}>
       <h2>Register Page</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
+        <div style = {{marginBottom:'2%'}}>
+          <label>Username: &nbsp;</label>
           <input
             type="text"
             value={username}
             onChange={handleUsernameChange}
           />
         </div>
-        <div>
-          <label>Password:</label>
+        <div style = {{marginBottom:'2%'}}>
+          <label>Password:&nbsp;&nbsp;&nbsp;</label>
           <input
             type="password"
             value={password}
             onChange={handlePasswordChange}
           />
         </div>
-        <div>
-          <label>First Name:</label>
+        <div style = {{marginBottom:'2%'}}>
+          <label>First Name: </label>
           <input
             type="text"
             value={firstName}
             onChange={handleFirstNameChange}
           />
         </div>
-        <div>
-          <label>Last Name:</label>
+        <div style = {{marginBottom:'2%'}}>
+          <label>Last Name:&nbsp;</label>
           <input
             type="text"
             value={lastName}
             onChange={handleLastNameChange}
           />
         </div>
-        <button type="submit">Register</button>
+        <div style = {{marginBottom:'5%'}}>
+            {registerResult && <p style={{color:'red'}}> {registerResult}</p>}
+            <Button variant="contained" color='grey' onClick={handleSubmit}>Register</Button>
+        </div>
+        <button style= {{display:"none"}} type = "submit"></button>
       </form>
-      <form onSubmit={changePage}>
-        <button>Login</button>
-      </form>
-      {registerResult && <p style={{color:'red'}}> {registerResult}</p>}
+        <div>
+            <h3>Already Have an Account?</h3>
+        </div>
+        <Button variant="contained" color='grey' onClick={changePage}>Login</Button>
     </div>
   );
 };

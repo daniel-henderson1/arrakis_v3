@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button } from "@mui/material";
 
 const LoginPage = (props) => {
   const [username, setUsername] = useState('');
@@ -47,31 +48,36 @@ const LoginPage = (props) => {
     props.setReg(true)
   };
   return (
-    <div>
+    <div style = {{marginLeft:'10%'}}>
       <h2>Login Page</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
+        <div style= {{marginBottom:'2%'}}>
+          <label>Username: </label>
           <input
             type="text"
             value={username}
             onChange={handleUsernameChange}
           />
         </div>
-        <div>
-          <label>Password:</label>
+        <div style = {{marginBottom:'2%'}}>
+          <label>Password: &nbsp;</label>
           <input
             type="password"
             value={password}
             onChange={handlePasswordChange}
           />
         </div>
-        <button type="submit">Login</button>
+        <div style = {{marginBottom:'5%'}}>
+        {loginResult && <p style={{color:'red'}}>{loginResult}</p>}
+        <Button variant="contained" color='grey' onClick={handleSubmit}>Login</Button>
+        </div>
+        <button style= {{display:"none"}} type = "submit"></button>
       </form>
-      <form onSubmit={changePage}>
-        <button>Register</button>
-      </form>
-      {loginResult && <p style={{color:'red'}}>{loginResult}</p>}
+      <div>
+        <h3>Don't Have an Account?</h3>
+      </div>
+      <Button variant="contained" color='grey' onClick={changePage}>Register</Button>
+      
     </div>
   );
 };
