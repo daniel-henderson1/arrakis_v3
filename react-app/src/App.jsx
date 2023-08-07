@@ -7,6 +7,7 @@ import { BookPage } from "./components/BookPage";
 import LoginPage from "./components/LoginPage"
 import Register from "./components/Register"
 import { RedeemPage } from "./components/RedeemPage";
+import LoginNavBar from './components/LoginNavBar';
 
 
 const App = () => {
@@ -16,11 +17,17 @@ const App = () => {
   if (!loggedIn) {
     if(!register){
       return (
-        <LoginPage setReg={setRegister} setLog={setLoggedIn} />
+        <>
+          <LoginNavBar/>
+          <LoginPage setReg={setRegister} setLog={setLoggedIn} />
+        </>
       )
     } else {
       return(
-        <Register setReg={setRegister}/>
+        <>
+          <LoginNavBar/>
+          <Register setReg={setRegister}/>
+        </>
       )
     }
   } else {
