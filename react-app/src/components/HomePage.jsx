@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { findSecurities } from "../services/SecurityServices";
+import { findSecurities, postRedeem } from "../services/SecurityServices";
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from "@mui/material";
 import { Card } from "@mui/material";
 import { CardContent } from "@mui/material";
 import styles from "./pets/Pets.module.css";
 import { Button } from "@mui/material";
+import { PostAddTwoTone } from "@mui/icons-material";
 
 
 export const HomePage = () => {
@@ -72,7 +73,8 @@ export const HomePage = () => {
     }
 
     const handleSubmit = () => {
-      console.log('pressed')
+      console.log(id);
+      postRedeem(id);
   }
 
   return (
