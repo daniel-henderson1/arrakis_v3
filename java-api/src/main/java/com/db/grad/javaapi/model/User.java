@@ -1,14 +1,12 @@
 package com.db.grad.javaapi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "username", nullable = false)
