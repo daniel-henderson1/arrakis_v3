@@ -44,17 +44,56 @@ class SecurityHandlerTest {
 
     @Test
     void addSecurity() {
+        Security theSecurity = new Security();
+        SecurityHandler cut = new SecurityHandler(securityRepo);
+        boolean result = false;
+        cut.addSecurity(theSecurity);
+        for(Security s: securityRepo.findAll()){
+            if(s == theSecurity){
+                result = true;
+            }
+        }
+        assertEquals(true,result);
     }
 
     @Test
-    void removeSecurity() {
-    }
+    void removeSecurity() {}
 
     @Test
     void getSecurityByID() {
+        Security s = new Security();
+        SecurityHandler cut = new SecurityHandler(securityRepo);
+        s.setId(1000);
+        boolean found = false;
+        cut.addSecurity(s);
+        if(s == cut.getSecurityByID(1000)){
+            found = true;
+        }
+        assertEquals(true,found);
     }
 
     @Test
     void updateSecurityDetails() {
+        SecurityHandler cut = new SecurityHandler(securityRepo);
+        Security theSecurity = new Security();
+        theSecurity.setIssuerName("Mark");
+        theSecurity.setId(1);
+        theSecurity.setBondCurrency("dollar");
+        theSecurity.setBondMaturityDate("23/10/2023");
+        cut.addSecurity(theSecurity);
+        theSecurity.setIssuerName("James");
+        cut.updateSecurityDetails(theSecurity);
+        boolean expectedResult = true;
+        boolean actualResult = false;
+
+        //act
+        for(Security s: securityRepo.findAll()){
+            if(s == theSecurity){
+                actualResult= true;
+            }
+        }
+
+        //assert
+        assertEquals( expectedResult, actualResult );
     }
 }
