@@ -1,14 +1,12 @@
 package com.db.grad.javaapi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "username", nullable = false)
@@ -19,6 +17,9 @@ public class User {
 
     @Column(name = "lastname", nullable = false)
     private String lastName;
+
+    @Column(name = "hash", nullable = false)
+    private String hash;
 
     public long getId() {
         return id;
@@ -49,5 +50,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 }

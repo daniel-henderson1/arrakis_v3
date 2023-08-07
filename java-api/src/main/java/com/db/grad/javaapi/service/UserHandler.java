@@ -2,9 +2,11 @@ package com.db.grad.javaapi.service;
 
 import com.db.grad.javaapi.model.User;
 import com.db.grad.javaapi.repository.UsersRepository;
+import com.google.common.hash.Hashing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +21,8 @@ public class UserHandler {
         itsUsersRepo = userRepo;
     }
 
-    public static User getUserByUsername(String username) {
-        return getUserByUsername(username);
+    public User getUserByUsername(String username) {
+        return itsUsersRepo.getUserByUsername(username);
     }
 
     public List<User> getAllUsers() {
@@ -53,7 +55,33 @@ public class UserHandler {
         return itsUsersRepo.findById(id);
     }
 
+    public boolean auth(String username,String password){
+        User user= itsUsersRepo.getUserByUsername(username);
+        if(user == null){return false;}
+        String sha256hex = Hashing.sha256()
+                .hashString(password, StandardCharsets.UTF_8)
+                .toString();
+        if(user.getHash().equals(sha256hex)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    public boolean register(String username,String password,String firstName,String lastName){
+        User user= itsUsersRepo.getUserByUsername(username);
+        if(user != null){return false;}
+        String sha256hex = Hashing.sha256()
+                .hashString(password, StandardCharsets.UTF_8)
+                .toString();
+        User newUser = new User();
+        newUser.setUsername(username);
+        newUser.setHash(sha256hex);
+        newUser.setFirstName(firstName);
+        newUser.setLastName(lastName);
+        itsUsersRepo.save(newUser);
+        return true;
+    }
     public User updateUserDetails(User UserToUpdate)
     {
         return (User) itsUsersRepo.save( UserToUpdate );

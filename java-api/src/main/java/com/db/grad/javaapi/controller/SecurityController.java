@@ -36,4 +36,12 @@ public class SecurityController {
                                                 @PathVariable(value = "month")int month, @PathVariable(value="year") int year){
         return SecurityHandler.getByDateT5Date(day,month,year);
     }
+    @GetMapping("/securities/redeem")
+    public List<Security> getByRedeem(){
+        return SecurityHandler.getByRedeemed();
+    }
+    @PostMapping("/securities/redeem/{id}")
+    public Security getByRedeem(@PathVariable(value = "id") long id){
+        return SecurityHandler.redeem(id);
+    }
 }

@@ -6,6 +6,9 @@ import styles from "./pets/Pets.module.css";
 import { Button } from "@mui/material";
 import { Card } from "@mui/material";
 import { CardContent } from "@mui/material";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+import { postRedeem } from "../services/SecurityServices";
 
 
 export const UpcomingPage = () => {
@@ -89,6 +92,13 @@ export const UpcomingPage = () => {
         })
     )
 
+    const notify = () => toast("Redeemed!")
+    const handleSubmit2 = () => {
+      console.log(id);
+      notify();
+      postRedeem(id);
+  }
+
   return (
     <>
         <div className={styles.fields}>
@@ -110,7 +120,11 @@ export const UpcomingPage = () => {
                 <DataGrid
                     rows={rowDef}
                     columns={columnDef}
-                    sx={{ maxWidth: '75%' }}
+                    sx={{ maxWidth: '80%', '.MuiDataGrid-columnHeader': {
+                        'background-color': '#dbb669'
+                      }, '.MuiDataGrid-row:nth-child(odd)': {
+                        'background-color': '#d5d9db'
+                      } }}
                     onRowClick={handleRowClick}
                     maxColumns={6}
                     />
@@ -139,6 +153,10 @@ export const UpcomingPage = () => {
                     <br/>
                       ISIN: {isin}
                 </CardContent>
+                <Button variant="contained" color='grey' onClick={handleSubmit2}>
+                    Redeem
+                </Button>
+                <ToastContainer hideProgressBar={false} theme={'light'} />
             </Card>
             }
             </div>

@@ -30,6 +30,9 @@ public class Security
     @Column(name = "type", nullable = false)
     private String type;
 
+    @Column(name = "redeemed", nullable = false)
+    private int redeemed;
+
 
     public long getId() {
         return id;
@@ -98,5 +101,13 @@ public class Security
     }
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getRedeemed() {
+        return redeemed;
+    }
+
+    public void setRedeemed(int redeemed) {
+        this.redeemed = redeemed;
     }
 }

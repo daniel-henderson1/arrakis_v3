@@ -27,6 +27,12 @@ public class SecurityRepositoryStub implements SecurityRepository {
 
         return null;
     }
+
+    @Override
+    public List<Security> findByRedeemed(int redeem) {
+        return null;
+    }
+
     @Override
     public Security findById(long id) {
         Security result = null;
