@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { findSecurities, postRedeem } from "../services/SecurityServices";
 import { DataGrid } from '@mui/x-data-grid';
-import { Box } from "@mui/material";
+import { Alert, Box } from "@mui/material";
 import { Card } from "@mui/material";
+import { Button } from "@mui/material";
 import { CardContent } from "@mui/material";
 import styles from "./pets/Pets.module.css";
+import { findUpcoming } from "../services/UpcomingServices";
 import { Button } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
@@ -24,12 +26,32 @@ export const HomePage = () => {
     const [status, setStatus] = useState("");
     const [type, setType] = useState("");
 
+    const MyComponent = () => {
+      useEffect(() => {
+        if (findUpcoming) {
+          toast.warning('Alert: You have bonds overdue for action.', {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: false,
+        });
+        }
+        },[]);
+
+      return (
+        <div>
+          <h1>stuffs</h1>
+          <ToastContainer />
+        </div>
+      );
+    };
+
+
     useEffect(() => {
       findSecurities()
             .then(({data}) => {
             setSecurities(data);
             });
     }, []);
+
     const columnDef = [
       {field: 'cusip', headerName: 'CUSIP', flex: 1},
       {field: 'bondCurrency', headerName: 'Currency', flex: 1},
@@ -81,7 +103,9 @@ export const HomePage = () => {
   }
 
   return (
-    <>
+    <>    
+
+          <MyComponent />
           <Box sx={{ height: '100%', width: '100%'}}>
             <div className={styles.container}>
             <DataGrid
@@ -95,6 +119,7 @@ export const HomePage = () => {
               onRowClick={handleRowClick}
               maxColumns={6}
               />
+
             {cardMessage &&
             <Card sx={{ minWidth: '25%'}}>
                 <CardContent>

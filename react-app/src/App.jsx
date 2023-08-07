@@ -11,6 +11,7 @@ import LoginNavBar from './components/LoginNavBar';
 
 
 const App = () => {
+
   const [selectedTab, setSelectedTab] = useState(0);
   const [loggedIn, setLoggedIn] = useState(false);
   const [register, setRegister] = useState(false);
