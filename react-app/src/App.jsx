@@ -6,6 +6,8 @@ import { UpcomingPage } from "./components/UpcomingPage";
 import { BookPage } from "./components/BookPage";
 import LoginPage from "./components/LoginPage"
 import Register from "./components/Register"
+import { RedeemPage } from "./components/RedeemPage";
+
 
 const App = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -41,6 +43,13 @@ const App = () => {
         <>
           <NavigationBar setTab={setSelectedTab} />
           <UpcomingPage />
+        </>
+      )
+    } else if (selectedTab === 3) {
+      return (
+        <>
+          <NavigationBar setTab={setSelectedTab} />
+          <RedeemPage />
         </>
       )
     }

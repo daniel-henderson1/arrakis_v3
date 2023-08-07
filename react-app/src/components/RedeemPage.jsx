@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { findSecurities, postRedeem } from "../services/SecurityServices";
+import { findRedeemed, findSecurities } from "../services/SecurityServices";
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from "@mui/material";
 import { Card } from "@mui/material";
 import { CardContent } from "@mui/material";
 import styles from "./pets/Pets.module.css";
-import { Button } from "@mui/material";
-import { PostAddTwoTone } from "@mui/icons-material";
 
 
-export const HomePage = () => {
+export const RedeemPage = () => {
     const [securities, setSecurities] = useState([]);
     const [cardMessage, setCardMessage] = useState(false);
     const [id, setID] = useState();
@@ -24,7 +22,7 @@ export const HomePage = () => {
     const [type, setType] = useState("");
 
     useEffect(() => {
-      findSecurities()
+      findRedeemed()
             .then(({data}) => {
             setSecurities(data);
             });
@@ -72,11 +70,6 @@ export const HomePage = () => {
         }
     }
 
-    const handleSubmit = () => {
-      console.log(id);
-      postRedeem(id);
-  }
-
   return (
     <>
           <Box sx={{ height: '100%', width: '100%'}}>
@@ -117,9 +110,6 @@ export const HomePage = () => {
                     <br/>
                       ISIN: {isin}
                 </CardContent>
-                <Button variant="contained" color='grey' onClick={handleSubmit}>
-                    Redeem
-                </Button>
             </Card>
             }
             </div>
