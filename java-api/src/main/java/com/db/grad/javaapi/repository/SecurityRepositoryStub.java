@@ -20,17 +20,26 @@ public class SecurityRepositoryStub implements SecurityRepository {
 
     private ArrayList<Security> itsSecurities = new ArrayList<>();
 
-
-    public List<Security> findByBondMaturityDateT5(String date){return null;}
     //@Override
     public List<Security> findByBondMaturityDate(String date) {
-
-        return null;
+        List<Security> securityList= new ArrayList<Security>();
+        for(Security s: itsSecurities){
+            if(date.equals(s.getBondMaturityDate())){
+                securityList.add(s);
+            }
+        }
+        return securityList;
     }
 
     @Override
     public List<Security> findByRedeemed(int redeem) {
-        return null;
+        List<Security> securityList= new ArrayList<Security>();
+        for(Security s: itsSecurities){
+            if(redeem==s.getRedeemed()){
+                securityList.add(s);
+            }
+        }
+        return securityList;
     }
 
     @Override
@@ -59,7 +68,7 @@ public class SecurityRepositoryStub implements SecurityRepository {
 
     @Override
     public List<Security> findAll() {
-        return null;
+        return itsSecurities;
     }
 
     @Override
@@ -109,7 +118,15 @@ public class SecurityRepositoryStub implements SecurityRepository {
 
     @Override
     public <S extends Security> S save(S entity) {
-        return null;
+        for(int i = 0;i < itsSecurities.size();i++) {
+            Security security = itsSecurities.get(i);
+            if (security.getId() == entity.getId()) {
+                itsSecurities.set(i, entity);
+                return entity;
+            }
+        }
+        itsSecurities.add(entity);
+        return entity;
     }
 
     @Override
