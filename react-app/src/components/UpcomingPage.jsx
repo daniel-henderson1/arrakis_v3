@@ -9,6 +9,7 @@ import { CardContent } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { postRedeem } from "../services/SecurityServices";
+import { findTradesID } from "../services/TradeService";
 
 
 export const UpcomingPage = () => {
@@ -26,6 +27,17 @@ export const UpcomingPage = () => {
     const [bondMaturityDate, setBondMaturityDate] = useState();
     const [status, setStatus] = useState("");
     const [type, setType] = useState("");
+
+    const [tradeID, setTradeID] = useState();
+    const [tradeType, setTradeType] = useState();
+    const [quantity, setQuantity] = useState();
+    const [settlementDate, setSettlementDate] = useState();
+    const [tradeDate, setTradeDate] = useState();
+    const [unitPrice, setUnitPrice] = useState();
+    const [counterPartyID, setCounterPartyID] = useState();
+    const [tradeData, setTradeData] = useState();
+
+
 
 
     const handleDateInput = (event) => {
@@ -62,6 +74,13 @@ export const UpcomingPage = () => {
             });
     }, [dateFinal]);
 
+    useEffect(() => {
+        findTradesID(id)
+            .then(({data}) => {
+                setTradeData(data);
+            });
+    }, [id]);
+
     const columnDef = [
       {field: 'id', headerName: 'ID', flex: 1},
       {field: 'couponPercent', headerName: 'Coupon %', flex: 1},
@@ -93,7 +112,6 @@ export const UpcomingPage = () => {
 
     const notify = () => toast("Redeemed!")
     const handleSubmit2 = () => {
-      console.log(rowDef[0].bondMaturityDate);
       notify();
       postRedeem(id);
   }
