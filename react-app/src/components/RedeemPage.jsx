@@ -5,10 +5,9 @@ import { Box } from "@mui/material";
 import { Card } from "@mui/material";
 import { CardContent } from "@mui/material";
 import styles from "./pets/Pets.module.css";
-import { Button } from "@mui/material";
 
 
-export const HomePage = () => {
+export const RedeemPage = () => {
     const [securities, setSecurities] = useState([]);
     const [cardMessage, setCardMessage] = useState(false);
     const [id, setID] = useState();
@@ -71,10 +70,6 @@ export const HomePage = () => {
         }
     }
 
-    const handleSubmit = () => {
-      console.log('pressed')
-  }
-
   return (
     <>
           <Box sx={{ height: '100%', width: '100%'}}>
@@ -115,9 +110,6 @@ export const HomePage = () => {
                     <br/>
                       ISIN: {isin}
                 </CardContent>
-                <Button variant="contained" color='grey' onClick={handleSubmit}>
-                    Submit
-                </Button>
             </Card>
             }
             </div>
