@@ -8,7 +8,12 @@ const findSecurities = () => {
 
 const postRedeem = (params) => {
   console.log(params);
-  axios.post(`${hostNameUrl}/securities/redeem/${params}`)
+  axios.post(`${hostNameUrl}/securities/redeem/${params}`, params)
+};
+
+const findRedeemed = () => {
+  const securities = axios.get(`${hostNameUrl}/securities/redeem`);
+  return securities;
 }
 
-export {findSecurities, postRedeem}
+export {findSecurities, postRedeem, findRedeemed}
