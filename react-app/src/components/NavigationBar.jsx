@@ -8,7 +8,7 @@ import { Theme, createTheme } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import companyLogo from '../assets/logo.png';
 
-const pages = ['Home', 'Books', 'Upcoming'];
+const pages = ['Home', 'Books', 'Upcoming', 'Redeemed'];
 
 const NavigationBar = (props) => {
 
@@ -39,11 +39,12 @@ const NavigationBar = (props) => {
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <div style={{fontSize: '30px',color:'#B97A57',fontFamily:'papyrus'}}>Arrakis</div>
               <img width='100px' height = 'auto' src = {companyLogo}/>
-              <div style={{marginLeft:'25%'}}>
-                <Tabs value={selectedTab} onChange={handleTabChange} textColor='secondary' sx={{color: 'white'}} TabIndicatorProps={{ style: {background: '#dbb669'} }}>
+              <div style={{marginLeft:'20%'}}>
+                <Tabs value={selectedTab} onChange={handleTabChange} textColor='secondary' sx={{color: 'white', 'justify-content': 'center'}} TabIndicatorProps={{ style: {background: '#dbb669'} }}>
                     <Tab label={pages[0]} />
                     <Tab label={pages[1]} />
                     <Tab label={pages[2]} />
+                    <Tab label={pages[3]} />
                 </Tabs>
                 </div>
             </Box>
@@ -52,6 +53,7 @@ const NavigationBar = (props) => {
     <TabPanel value={selectedTab} index={0}/>
     <TabPanel value={selectedTab} index={1}/>
     <TabPanel value={selectedTab} index={2}/>
+    <TabPanel value={selectedTab} index={3}/>
     </ThemeProvider>
      </>
    );
