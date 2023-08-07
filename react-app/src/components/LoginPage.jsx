@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginResult, setLoginResult] = useState(null);
@@ -20,6 +20,7 @@ const LoginPage = () => {
     try {
       // Make an API call to the backend to check the login
         axios.get(`http://localhost:8080/api/v1/users/auth/${username}/${password}`).then((response)=>{
+        props.setLog(response.data);
         if(response.data === true)
         {
             setLoginResult('Success');
