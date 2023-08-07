@@ -117,7 +117,7 @@ export const BookPage = () => {
                         rows={rowDef1}
                         columns={columnDef1}
                         sx={{ height: '50%', '.MuiDataGrid-columnHeader': {
-                            'background-color': '#8fbccc'
+                            'background-color': '#dbb669'
                           }, '.MuiDataGrid-row:nth-child(odd)': {
                             'background-color': '#d5d9db'
                           } }}
@@ -128,7 +128,7 @@ export const BookPage = () => {
                         rows={rowDef2}
                         columns={columnDef2}
                         sx={{ height: '50%', '.MuiDataGrid-columnHeader': {
-                            'background-color': '#8fbccc'
+                            'background-color': '#dbb669'
                           }, '.MuiDataGrid-row:nth-child(odd)': {
                             'background-color': '#d5d9db'
                           } }}

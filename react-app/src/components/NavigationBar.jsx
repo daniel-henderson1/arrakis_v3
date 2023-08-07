@@ -25,7 +25,7 @@ const NavigationBar = (props) => {
     const theme = createTheme({
         palette: {
           secondary: {
-            main: '#8FBCCC'
+            main: '#000000'
           }
         }
       });
@@ -33,10 +33,10 @@ const NavigationBar = (props) => {
   return (
     <>
     <ThemeProvider theme={theme}>
-    <AppBar position="static"  sx={{ 'background-color': '#e8f6ff'}}>
+    <AppBar position="static"  sx={{ 'background-color': '#f5dba4'}}>
         <Container maxWidth="xl">
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', 'justify-content': 'space-around' } }}>
-                <Tabs value={selectedTab} onChange={handleTabChange} textColor='secondary' sx={{color: 'white'}} TabIndicatorProps={{ style: {background: '#8fbccc'} }}>
+                <Tabs value={selectedTab} onChange={handleTabChange} textColor='secondary' sx={{color: 'white'}} TabIndicatorProps={{ style: {background: '#dbb669'} }}>
                     <Tab label={pages[0]} />
                     <Tab label={pages[1]} />
                     <Tab label={pages[2]} />

@@ -111,7 +111,7 @@ export const UpcomingPage = () => {
                     rows={rowDef}
                     columns={columnDef}
                     sx={{ maxWidth: '80%', '.MuiDataGrid-columnHeader': {
-                        'background-color': '#8fbccc'
+                        'background-color': '#dbb669'
                       }, '.MuiDataGrid-row:nth-child(odd)': {
                         'background-color': '#d5d9db'
                       } }}

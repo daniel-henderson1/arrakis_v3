@@ -78,7 +78,7 @@ export const HomePage = () => {
               rows={rowDef}
               columns={columnDef}
               sx={{ maxWidth: '75%', '.MuiDataGrid-columnHeader': {
-                'background-color': '#8fbccc'
+                'background-color': '#dbb669'
               }, '.MuiDataGrid-row:nth-child(odd)': {
                 'background-color': '#d5d9db'
               } }}
