@@ -27,9 +27,12 @@ export const HomePage = () => {
 
     const MyComponent = () => {
       const handleButtonClick = () => {
-        toast.success('Successful toast message!', {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        if (securities.bondMaturityDate < Date.now) {
+          toast.warning('Alert: You have bonds overdue for action.', {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: false,
+          });
+        }
       };
     return (
       <div>
@@ -92,6 +95,7 @@ export const HomePage = () => {
 
   return (
     <>    
+
           <MyComponent />
           <Box sx={{ height: '100%', width: '100%'}}>
             <div className={styles.container}>
