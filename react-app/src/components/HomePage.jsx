@@ -38,7 +38,6 @@ export const HomePage = () => {
 
       return (
         <div>
-          <h1>stuffs</h1>
           <ToastContainer />
         </div>
       );
