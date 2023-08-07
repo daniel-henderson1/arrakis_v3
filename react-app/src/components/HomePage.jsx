@@ -6,7 +6,8 @@ import { Card } from "@mui/material";
 import { CardContent } from "@mui/material";
 import styles from "./pets/Pets.module.css";
 import { Button } from "@mui/material";
-import { PostAddTwoTone } from "@mui/icons-material";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 
 export const HomePage = () => {
@@ -72,8 +73,10 @@ export const HomePage = () => {
         }
     }
 
+    const notify = () => toast("Redeemed!")
     const handleSubmit = () => {
       console.log(id);
+      notify();
       postRedeem(id);
   }
 
@@ -120,11 +123,11 @@ export const HomePage = () => {
                 <Button variant="contained" color='grey' onClick={handleSubmit}>
                     Redeem
                 </Button>
+                <ToastContainer hideProgressBar={false} theme={'light'} />
             </Card>
             }
             </div>
           </Box>
-        
     </>
   )
 };
