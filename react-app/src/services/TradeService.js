@@ -1,4 +1,3 @@
-import e from "express";
 import { hostNameUrl } from "../config/api";
 import axios from "axios";
 
@@ -8,7 +7,7 @@ const findTrades = (id) => {
 };
 
 const findTradesID = (id) => {
-  const trades = axios.get(`${hostNameUrl}/security/book/${id}`);
+  const trades = axios.get(`${hostNameUrl}/trades/security/${id}`);
   return trades;
 };
 

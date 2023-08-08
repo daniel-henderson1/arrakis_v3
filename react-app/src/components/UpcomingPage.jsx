@@ -17,7 +17,7 @@ export const UpcomingPage = () => {
     const [date, setDate] = useState("");
     const [dateFinal, setDateFinal] = useState("");
     const [cardMessage, setCardMessage] = useState(false);
-    const [id, setID] = useState();
+    const [id, setID] = useState(1);
     const [couponPercent, setCouponPercent] = useState();
     const [bondCurrency, setBondCurrency] = useState("");
     const [cusip, setCusip] = useState();
@@ -65,6 +65,13 @@ export const UpcomingPage = () => {
         } else {
             setCardMessage(!cardMessage);
         }
+        setTradeID(tradeData.tradeID);
+        setTradeType(tradeData.tradeType);
+        setQuantity(tradeData.quantity);
+        setSettlementDate(tradeData.tradeSettlementDate);
+        setTradeDate(tradeData.tradeDate);
+        setUnitPrice(tradeData.unitPrice);
+        setCounterPartyID(tradeData.counterPartyID);
     }
 
     useEffect(() => {
@@ -169,6 +176,18 @@ export const UpcomingPage = () => {
                       Face Value: {faceValue}
                     <br/>
                       ISIN: {isin}
+                    <br/>
+                      Trade Date: {tradeDate}
+                    <br/>
+                      Trade Type: {tradeType}
+                    <br/>
+                      Quantity: {quantity}
+                    <br/>
+                      Settlement Date: {settlementDate}
+                    <br/>
+                      Unit Price: {unitPrice}
+                    <br/>
+                      Counter Party ID: {counterPartyID}
                 </CardContent>
                 <Button variant="contained" color='grey' onClick={handleSubmit2}>
                     Redeem
