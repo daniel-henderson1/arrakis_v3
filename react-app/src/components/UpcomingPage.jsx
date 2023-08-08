@@ -9,6 +9,7 @@ import { CardContent } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { postRedeem } from "../services/SecurityServices";
+import { findTradesID } from "../services/TradeService";
 
 
 export const UpcomingPage = () => {
@@ -16,7 +17,7 @@ export const UpcomingPage = () => {
     const [date, setDate] = useState("");
     const [dateFinal, setDateFinal] = useState("");
     const [cardMessage, setCardMessage] = useState(false);
-    const [id, setID] = useState();
+    const [id, setID] = useState(1);
     const [couponPercent, setCouponPercent] = useState();
     const [bondCurrency, setBondCurrency] = useState("");
     const [cusip, setCusip] = useState();
@@ -26,6 +27,17 @@ export const UpcomingPage = () => {
     const [bondMaturityDate, setBondMaturityDate] = useState();
     const [status, setStatus] = useState("");
     const [type, setType] = useState("");
+
+    const [tradeID, setTradeID] = useState();
+    const [tradeType, setTradeType] = useState();
+    const [quantity, setQuantity] = useState();
+    const [settlementDate, setSettlementDate] = useState();
+    const [tradeDate, setTradeDate] = useState();
+    const [unitPrice, setUnitPrice] = useState();
+    const [counterPartyID, setCounterPartyID] = useState();
+    const [tradeData, setTradeData] = useState();
+
+
 
 
     const handleDateInput = (event) => {
@@ -53,6 +65,13 @@ export const UpcomingPage = () => {
         } else {
             setCardMessage(!cardMessage);
         }
+        setTradeID(tradeData.tradeID);
+        setTradeType(tradeData.tradeType);
+        setQuantity(tradeData.quantity);
+        setSettlementDate(tradeData.tradeSettlementDate);
+        setTradeDate(tradeData.tradeDate);
+        setUnitPrice(tradeData.unitPrice);
+        setCounterPartyID(tradeData.counterPartyID);
     }
 
     useEffect(() => {
@@ -61,6 +80,13 @@ export const UpcomingPage = () => {
             setSecurities(data);
             });
     }, [dateFinal]);
+
+    useEffect(() => {
+        findTradesID(id)
+            .then(({data}) => {
+                setTradeData(data);
+            });
+    }, [id]);
 
     const columnDef = [
       {field: 'id', headerName: 'ID', flex: 1},
@@ -93,7 +119,6 @@ export const UpcomingPage = () => {
 
     const notify = () => toast("Redeemed!")
     const handleSubmit2 = () => {
-      console.log(rowDef[0].bondMaturityDate);
       notify();
       postRedeem(id);
   }
@@ -151,6 +176,18 @@ export const UpcomingPage = () => {
                       Face Value: {faceValue}
                     <br/>
                       ISIN: {isin}
+                    <br/>
+                      Trade Date: {tradeDate}
+                    <br/>
+                      Trade Type: {tradeType}
+                    <br/>
+                      Quantity: {quantity}
+                    <br/>
+                      Settlement Date: {settlementDate}
+                    <br/>
+                      Unit Price: {unitPrice}
+                    <br/>
+                      Counter Party ID: {counterPartyID}
                 </CardContent>
                 <Button variant="contained" color='grey' onClick={handleSubmit2}>
                     Redeem

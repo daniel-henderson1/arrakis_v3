@@ -136,7 +136,7 @@ export const BookPage = () => {
                         maxColumns={6}
                         />
                 </div>
-                    {cardMessage &&
+                    {/* {cardMessage &&
             <Card sx={{ minWidth: '25%'}}>
                 <CardContent>
                     <b>
@@ -162,7 +162,7 @@ export const BookPage = () => {
                       ISIN: {isin}
                 </CardContent>
             </Card>
-            }
+            } */}
             </div>
         </Box>   
     </>
