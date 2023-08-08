@@ -39,7 +39,7 @@ const NavigationBar = (props) => {
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <div style={{fontSize: '30px',color:'#B97A57',fontFamily:'papyrus'}}>Arrakis</div>
               <img width='100px' height = 'auto' src = {companyLogo}/>
-              <div style={{marginLeft:'10%'}}>
+              <div style={{marginLeft:'20%'}}>
                 <Tabs value={selectedTab} onChange={handleTabChange} textColor='secondary' sx={{color: 'white', 'justify-content': 'center'}} TabIndicatorProps={{ style: {background: '#dbb669'} }}>
                     <Tab label={pages[0]} />
                     <Tab label={pages[1]} />
