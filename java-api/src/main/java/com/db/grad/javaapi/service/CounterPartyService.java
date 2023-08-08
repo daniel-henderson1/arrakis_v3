@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CounterPartyHandler {
+public class CounterPartyService {
     @Autowired
     private CounterPartyRepository itsCounterPartyRepo;
 
-    public CounterPartyHandler(CounterPartyRepository counterPartyRepo ) {
+    public CounterPartyService(CounterPartyRepository counterPartyRepo ) {
         itsCounterPartyRepo = counterPartyRepo;
     }
     public CounterParty getCounterPartyByID(long id){

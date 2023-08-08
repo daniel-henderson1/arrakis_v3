@@ -5,17 +5,16 @@ import com.db.grad.javaapi.repository.TradesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
 @Service
-public class TradeHandler implements ITradesService{
+public class TradeService implements ITradesService{
     private TradesRepository itsTradesRepo;
 
     @Autowired
-    public TradeHandler(TradesRepository TradeRepo)
+    public TradeService(TradesRepository TradeRepo)
     {
         itsTradesRepo = TradeRepo;
     }

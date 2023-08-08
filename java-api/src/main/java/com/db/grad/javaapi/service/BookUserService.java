@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BookUserHandler {
+public class BookUserService {
     @Autowired
     private BookUserRepository bookUserRepository;
 
-    public BookUserHandler(BookUserRepository bookUserRepo){
+    public BookUserService(BookUserRepository bookUserRepo){
         bookUserRepository = bookUserRepo;
     }
     public List<BookUser> getBookUserByBookID(long id){

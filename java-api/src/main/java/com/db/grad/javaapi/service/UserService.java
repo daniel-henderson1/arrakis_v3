@@ -12,11 +12,11 @@ import java.util.Optional;
 
 
 @Service
-public class UserHandler {
+public class UserService {
     private UsersRepository itsUsersRepo;
 
     @Autowired
-    public UserHandler(UsersRepository userRepo)
+    public UserService(UsersRepository userRepo)
     {
         itsUsersRepo = userRepo;
     }

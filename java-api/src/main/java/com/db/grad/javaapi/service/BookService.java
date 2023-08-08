@@ -5,17 +5,16 @@ import com.db.grad.javaapi.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
 @Service
-public class BookHandler implements IBookService{
+public class BookService implements IBookService{
     private BookRepository itsBooksRepo;
 
     @Autowired
-    public BookHandler(BookRepository BookRepo)
+    public BookService(BookRepository BookRepo)
     {
         itsBooksRepo = BookRepo;
     }

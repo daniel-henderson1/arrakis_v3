@@ -1,8 +1,7 @@
 package com.db.grad.javaapi.controller;
 
 import com.db.grad.javaapi.model.Security;
-import com.db.grad.javaapi.service.SecurityHandler;
-import org.springdoc.core.SecurityService;
+import com.db.grad.javaapi.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,36 +11,36 @@ import java.util.List;
 @RequestMapping("/api/v1")
 @CrossOrigin(origins = "http://localhost:3000")
 public class SecurityController {
-    private SecurityHandler SecurityHandler;
+    private SecurityService SecurityService;
     @Autowired
-    public SecurityController(SecurityHandler sS){
-        SecurityHandler = sS;
+    public SecurityController(SecurityService sS){
+        SecurityService = sS;
     }
     @GetMapping("/securities")
     public List<Security> getAllSecurities() {
-        return SecurityHandler.getAllSecurities();
+        return SecurityService.getAllSecurities();
     }
     @GetMapping("/securities/{day}/{month}/{year}")
     public List<Security> getSecuritiesByDate(@PathVariable(value="day")int day,
     @PathVariable(value = "month")int month, @PathVariable(value="year") int year
     ){
-        return SecurityHandler.getByDate(day,month,year);
+        return SecurityService.getByDate(day,month,year);
     }
     @GetMapping("/securities/T5")
     public List<Security> getSecuritiesByDate(){
-        return SecurityHandler.getByDateT5();
+        return SecurityService.getByDateT5();
     }
     @GetMapping("/securities/T5/{day}/{month}/{year}")
     public List<Security> getSecuritiesT5ByDate(@PathVariable(value="day")int day,
                                                 @PathVariable(value = "month")int month, @PathVariable(value="year") int year){
-        return SecurityHandler.getByDateT5Date(day,month,year);
+        return SecurityService.getByDateT5Date(day,month,year);
     }
     @GetMapping("/securities/redeem")
     public List<Security> getByRedeem(){
-        return SecurityHandler.getByRedeemed();
+        return SecurityService.getByRedeemed();
     }
     @PostMapping("/securities/redeem/{id}")
     public Security getByRedeem(@PathVariable(value = "id") long id){
-        return SecurityHandler.redeem(id);
+        return SecurityService.redeem(id);
     }
 }

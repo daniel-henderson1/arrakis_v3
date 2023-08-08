@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SecurityHandlerTest {
+class SecurityServiceTest {
 
     @BeforeEach
     void setUp() {
@@ -20,7 +20,7 @@ class SecurityHandlerTest {
     @Test
     void getAllSecurities() {
         //arrange
-        SecurityHandler cut = new SecurityHandler(securityRepo);
+        SecurityService cut = new SecurityService(securityRepo);
         Security theSecurity = new Security();
         theSecurity.setIssuerName("Mark");
         theSecurity.setId(1);
@@ -45,7 +45,7 @@ class SecurityHandlerTest {
     @Test
     void addSecurity() {
         Security theSecurity = new Security();
-        SecurityHandler cut = new SecurityHandler(securityRepo);
+        SecurityService cut = new SecurityService(securityRepo);
         boolean result = false;
         cut.addSecurity(theSecurity);
         for(Security s: securityRepo.findAll()){
@@ -62,7 +62,7 @@ class SecurityHandlerTest {
     @Test
     void getSecurityByID() {
         Security s = new Security();
-        SecurityHandler cut = new SecurityHandler(securityRepo);
+        SecurityService cut = new SecurityService(securityRepo);
         s.setId(1000);
         boolean found = false;
         cut.addSecurity(s);
@@ -74,7 +74,7 @@ class SecurityHandlerTest {
 
     @Test
     void updateSecurityDetails() {
-        SecurityHandler cut = new SecurityHandler(securityRepo);
+        SecurityService cut = new SecurityService(securityRepo);
         Security theSecurity = new Security();
         theSecurity.setIssuerName("Mark");
         theSecurity.setId(1);

@@ -2,21 +2,18 @@ package com.db.grad.javaapi.service;
 
 import com.db.grad.javaapi.model.Security;
 import com.db.grad.javaapi.repository.SecurityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.Collections.addAll;
-
 @Service
-public class SecurityHandler implements ISecurityService
+public class SecurityService implements ISecurityService
 {
     private SecurityRepository itsSecuritiesRepo;
 
-    public SecurityHandler(SecurityRepository securityRepo )
+    public SecurityService(SecurityRepository securityRepo )
     {
         itsSecuritiesRepo = securityRepo;
     }
