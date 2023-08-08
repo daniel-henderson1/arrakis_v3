@@ -6,6 +6,9 @@ import styles from "./pets/Pets.module.css";
 import { Button } from "@mui/material";
 import { Card } from "@mui/material";
 import { CardContent } from "@mui/material";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+import { postRedeem } from "../services/SecurityServices";
 
 
 export const UpcomingPage = () => {
@@ -61,13 +64,12 @@ export const UpcomingPage = () => {
 
     const columnDef = [
       {field: 'id', headerName: 'ID', flex: 1},
-      {field: 'couponPercent', headerName: 'Coupon %'},
-      {field: 'bondCurrency', headerName: 'Currency'},
+      {field: 'couponPercent', headerName: 'Coupon %', flex: 1},
       {field: 'cusip', headerName: 'CUSIP', flex: 1},
       {field: 'bondCurrency', headerName: 'Currency', flex: 1},
       {field: 'faceValue', headerName: 'Face Value', flex: 1},
-      {field: 'isin', headerName: 'ISIN'},
-      {field: 'issuerName', headerName: 'Issuer'},
+      {field: 'isin', headerName: 'ISIN', flex: 1},
+      {field: 'issuerName', headerName: 'Issuer', flex: 1},
       {field: 'bondMaturityDate', headerName: 'Maturity Date', flex: 1},
       {field: 'status', headerName: 'Status', flex: 1},
       {field: 'type', headerName: 'Type', flex: 1}
@@ -89,11 +91,18 @@ export const UpcomingPage = () => {
         })
     )
 
+    const notify = () => toast("Redeemed!")
+    const handleSubmit2 = () => {
+      console.log(rowDef[0].bondMaturityDate);
+      notify();
+      postRedeem(id);
+  }
+
   return (
     <>
         <div className={styles.fields}>
         <TextField
-         sx = {{ 'display': 'flex', 'flex-direction': 'row', 'justify-content': 'space-around', 'content-align': 'center'}}
+         sx = {{ 'display': 'flex', 'flex-direction': 'row', 'justify-content': 'space-around', 'content-align': 'center' }}
          id="standard-basic" 
          variant="standard" 
          type="search"
@@ -143,6 +152,10 @@ export const UpcomingPage = () => {
                     <br/>
                       ISIN: {isin}
                 </CardContent>
+                <Button variant="contained" color='grey' onClick={handleSubmit2}>
+                    Redeem
+                </Button>
+                <ToastContainer hideProgressBar={false} theme={'light'} />
             </Card>
             }
             </div>

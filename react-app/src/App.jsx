@@ -5,14 +5,32 @@ import { useState } from "react";
 import { UpcomingPage } from "./components/UpcomingPage";
 import { BookPage } from "./components/BookPage";
 import LoginPage from "./components/LoginPage"
+import Register from "./components/Register"
+import { RedeemPage } from "./components/RedeemPage";
+import LoginNavBar from './components/LoginNavBar';
+
 
 const App = () => {
+
   const [selectedTab, setSelectedTab] = useState(0);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [register, setRegister] = useState(false);
   if (!loggedIn) {
-    return (
-      <LoginPage setLog={setLoggedIn} />
-    )
+    if(!register){
+      return (
+        <>
+          <LoginNavBar/>
+          <LoginPage setReg={setRegister} setLog={setLoggedIn} />
+        </>
+      )
+    } else {
+      return(
+        <>
+          <LoginNavBar/>
+          <Register setReg={setRegister}/>
+        </>
+      )
+    }
   } else {
     if (selectedTab === 0) {
       return (
@@ -33,6 +51,13 @@ const App = () => {
         <>
           <NavigationBar setTab={setSelectedTab} />
           <UpcomingPage />
+        </>
+      )
+    } else if (selectedTab === 3) {
+      return (
+        <>
+          <NavigationBar setTab={setSelectedTab} />
+          <RedeemPage />
         </>
       )
     }

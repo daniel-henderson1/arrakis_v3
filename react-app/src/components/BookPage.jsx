@@ -48,7 +48,7 @@ export const BookPage = () => {
         // } else {
         //     setCardMessage(!cardMessage);
         // }
-        console.log('Clicked trade ID: ' + params.row.id);
+        // console.log('Clicked trade ID: ' + params.row.id);
     }
 
     useEffect(() => {

@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { findSecurities, postRedeem } from "../services/SecurityServices";
+import { findRedeemed, findSecurities } from "../services/SecurityServices";
 import { DataGrid } from '@mui/x-data-grid';
-import { Alert, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { Card } from "@mui/material";
-import { Button } from "@mui/material";
 import { CardContent } from "@mui/material";
 import styles from "./pets/Pets.module.css";
-import { findUpcoming } from "../services/UpcomingServices";
-import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
 
 
-export const HomePage = () => {
+export const RedeemPage = () => {
     const [securities, setSecurities] = useState([]);
     const [cardMessage, setCardMessage] = useState(false);
     const [id, setID] = useState();
@@ -25,31 +21,12 @@ export const HomePage = () => {
     const [status, setStatus] = useState("");
     const [type, setType] = useState("");
 
-    const MyComponent = () => {
-      useEffect(() => {
-        if (findUpcoming) {
-          toast.warning('Alert: You have bonds overdue for action.', {
-            position: toast.POSITION.TOP_RIGHT,
-            autoClose: false,
-        });
-        }
-        },[]);
-
-      return (
-        <div>
-          <ToastContainer />
-        </div>
-      );
-    };
-
-
     useEffect(() => {
-      findSecurities()
+      findRedeemed()
             .then(({data}) => {
             setSecurities(data);
             });
     }, []);
-
     const columnDef = [
       {field: 'cusip', headerName: 'CUSIP', flex: 1},
       {field: 'bondCurrency', headerName: 'Currency', flex: 1},
@@ -93,17 +70,8 @@ export const HomePage = () => {
         }
     }
 
-    const notify = () => toast("Redeemed!")
-    const handleSubmit = () => {
-      console.log(id);
-      notify();
-      postRedeem(id);
-  }
-
   return (
-    <>    
-
-          <MyComponent />
+    <>
           <Box sx={{ height: '100%', width: '100%'}}>
             <div className={styles.container}>
             <DataGrid
@@ -117,7 +85,6 @@ export const HomePage = () => {
               onRowClick={handleRowClick}
               maxColumns={6}
               />
-
             {cardMessage &&
             <Card sx={{ minWidth: '25%'}}>
                 <CardContent>
@@ -143,14 +110,11 @@ export const HomePage = () => {
                     <br/>
                       ISIN: {isin}
                 </CardContent>
-                <Button variant="contained" color='grey' onClick={handleSubmit}>
-                    Redeem
-                </Button>
-                <ToastContainer hideProgressBar={false} theme={'light'} />
             </Card>
             }
             </div>
           </Box>
+        
     </>
   )
 };
